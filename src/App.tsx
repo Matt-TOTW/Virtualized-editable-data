@@ -26,16 +26,16 @@ const App: React.FC = () => {
       <Grid container sx={{ justifyContent: 'space-between', margin: '24px 0' }}>
         <Grid container item sx={{ width: 'fit-content' }}>
           <TextField
-            size='small'
-            label='# of rows'
+            size="small"
+            label="# of rows"
             required
             InputProps={{
-              disableUnderline: true,
+              disableUnderline: true
             }}
             value={numberOfRows}
             onChange={handelChange}
           />
-          <Button onClick={() => setShow(true)} variant='contained' disabled={show}>
+          <Button onClick={() => setShow(true)} variant="contained" disabled={show}>
             Paint
           </Button>
         </Grid>
@@ -43,26 +43,29 @@ const App: React.FC = () => {
           <Button
             onClick={() => handleClick('dataGrid')}
             variant={page === 'dataGrid' ? 'contained' : 'outlined'}
-            disabled={page === 'dataGrid'}>
+            disabled={page === 'dataGrid'}
+          >
             Data grid
           </Button>
           <Button
             onClick={() => handleClick('plainTable')}
             variant={page === 'plainTable' ? 'contained' : 'outlined'}
-            disabled={page === 'plainTable'}>
+            disabled={page === 'plainTable'}
+          >
             Plain table
           </Button>
           <Button
             onClick={() => handleClick('virtualizedTable')}
             variant={page === 'virtualizedTable' ? 'contained' : 'outlined'}
-            disabled={page === 'virtualizedTable'}>
+            disabled={page === 'virtualizedTable'}
+          >
             Virtualized table
           </Button>
         </Grid>
       </Grid>
-      {page === 'dataGrid' && <Typography variant='h5'>Data grid</Typography>}
-      {page === 'plainTable' && <Typography variant='h5'>Plain table</Typography>}
-      {page === 'virtualizedTable' && <Typography variant='h5'>Plain table</Typography>}
+      {page === 'dataGrid' && <Typography variant="h5">Data grid</Typography>}
+      {page === 'plainTable' && <Typography variant="h5">Plain table</Typography>}
+      {page === 'virtualizedTable' && <Typography variant="h5">Virtualized table</Typography>}
       {show && (
         <>
           {page === 'dataGrid' && <MuiDateGrid numberOfRows={numberOfRows} />}

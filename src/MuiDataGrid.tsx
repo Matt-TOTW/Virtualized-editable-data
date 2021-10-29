@@ -2,7 +2,7 @@ import React from 'react';
 
 import { DataGrid } from '@mui/x-data-grid';
 import { dataGridColumns, generateRows } from './test-data';
-import { Button, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 
 const MuiDataGrid: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) => {
   const [rows, setRows] = React.useState<any[]>(generateRows(numberOfRows));
@@ -19,7 +19,7 @@ const MuiDataGrid: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) => {
 
   return (
     <>
-      <Button variant='contained' onClick={repaint}>
+      <Button variant="contained" onClick={repaint}>
         Repaint
       </Button>
       <DataGrid
