@@ -32,16 +32,17 @@ const ReactVirtualizedTable: React.FC<ReactVirtualizedTableProps> = (props) => {
 
     return (
       <TableCell
-        component='div'
+        component="div"
         sx={{
           flex: 1,
           display: 'flex',
           alignItems: 'center',
           boxSizing: 'border-box',
-          cursor: 'initial',
+          cursor: 'initial'
         }}
-        variant='head'
-        style={{ height: headerHeight }}>
+        variant="head"
+        style={{ height: headerHeight }}
+      >
         <span>{label}</span>
       </TableCell>
     );
@@ -50,16 +51,17 @@ const ReactVirtualizedTable: React.FC<ReactVirtualizedTableProps> = (props) => {
   const cellRenderer: TableCellRenderer = ({ cellData }) => {
     return (
       <TableCell
-        component='div'
+        component="div"
         sx={{
           flex: 1,
           display: 'flex',
           alignItems: 'center',
           boxSizing: 'border-box',
-          cursor: 'initial',
+          cursor: 'initial'
         }}
-        variant='body'
-        style={{ height: rowHeight }}>
+        variant="body"
+        style={{ height: rowHeight }}
+      >
         {cellData}
       </TableCell>
     );
@@ -73,12 +75,13 @@ const ReactVirtualizedTable: React.FC<ReactVirtualizedTableProps> = (props) => {
           width={width}
           rowHeight={rowHeight!}
           gridStyle={{
-            direction: 'inherit',
+            direction: 'inherit'
           }}
           headerHeight={headerHeight!}
           {...tableProps}
-          rowClassName='row'
-          rowStyle={{ display: 'flex', alignItems: 'center', boxSizing: 'border-box' }}>
+          rowClassName="row"
+          rowStyle={{ display: 'flex', alignItems: 'center', boxSizing: 'border-box' }}
+        >
           {columns.map(({ dataKey, ...other }, index) => {
             return (
               <Column
@@ -112,7 +115,7 @@ const VirtualizedTable: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) 
 
   return (
     <>
-      <Button variant='contained' onClick={repaint}>
+      <Button variant="contained" onClick={repaint}>
         Repaint
       </Button>
       <TableContainer component={Paper} sx={{ height: 500 }}>

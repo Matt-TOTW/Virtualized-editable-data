@@ -7,7 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { generateRows } from './test-data';
-import { Button, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 
 const PlainTable: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) => {
   const [rows, setRows] = React.useState<any[]>(generateRows(numberOfRows));
@@ -24,11 +24,11 @@ const PlainTable: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) => {
 
   return (
     <>
-      <Button variant='contained' onClick={repaint}>
+      <Button variant="contained" onClick={repaint}>
         Repaint
       </Button>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Id</TableCell>
@@ -47,7 +47,7 @@ const PlainTable: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) => {
           <TableBody>
             {rows.map((row) => (
               <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component='th' scope='row'>
+                <TableCell component="th" scope="row">
                   {row.id}
                 </TableCell>
                 <TableCell>{row.col1}</TableCell>
