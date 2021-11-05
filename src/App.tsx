@@ -29,9 +29,6 @@ const App: React.FC = () => {
             size="small"
             label="# of rows"
             required
-            InputProps={{
-              disableUnderline: true
-            }}
             value={numberOfRows}
             onChange={handelChange}
           />
@@ -42,21 +39,21 @@ const App: React.FC = () => {
         <Grid item>
           <Button
             onClick={() => handleClick('dataGrid')}
-            variant={page === 'dataGrid' ? 'contained' : 'outlined'}
+            variant='outlined'
             disabled={page === 'dataGrid'}
           >
             Data grid
           </Button>
           <Button
             onClick={() => handleClick('plainTable')}
-            variant={page === 'plainTable' ? 'contained' : 'outlined'}
+            variant='outlined'
             disabled={page === 'plainTable'}
           >
             Plain table
           </Button>
           <Button
             onClick={() => handleClick('virtualizedTable')}
-            variant={page === 'virtualizedTable' ? 'contained' : 'outlined'}
+            variant='outlined'
             disabled={page === 'virtualizedTable'}
           >
             Virtualized table
