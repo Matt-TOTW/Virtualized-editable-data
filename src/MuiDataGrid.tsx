@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DataGrid, GridState } from '@mui/x-data-grid';
+import { DataGrid, GridEditRowsModel } from '@mui/x-data-grid';
 import { generateRows } from './test-data';
 import { Button } from '@mui/material';
 import { GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
@@ -10,19 +10,20 @@ const MuiDataGrid: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) => {
   const [rows, setRows] = React.useState<any[]>(generateRows(numberOfRows));
 
   const repaint = () => {
-    // set rows to []
     setRows([]);
   };
 
   React.useEffect(() => {
     if (!rows.length) {
-      // set rows
       setRows(generateRows(numberOfRows));
     }
   }, [numberOfRows, rows.length]);
 
-  const handleStateChange = (newGrid: GridState) => {
-    console.log('newGrid', newGrid);
+  const handleEditRowsModelChange = (editRowsModel: GridEditRowsModel) => {
+    // This is just one example of a prop that can be used
+    // to handle edits of the grid.
+
+    console.log('editRowsModel', editRowsModel);
   };
 
   const handleDoubleCellClick = React.useCallback((_params, event) => {
@@ -38,55 +39,49 @@ const MuiDataGrid: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) => {
     {
       field: 'col1',
       headerName: 'Col 1',
-      width: 100,
+      width: 120,
       editable: true
     },
     {
       field: 'col2',
       headerName: 'Col 2',
-      width: 100,
+      width: 120,
       editable: true
     },
     {
       field: 'col3',
       headerName: 'Col 3',
-      width: 100,
+      width: 120,
       editable: true
     },
     {
       field: 'col4',
       headerName: 'Col 4',
-      width: 100,
+      width: 120,
       editable: true
     },
     {
       field: 'col5',
       headerName: 'Col 5',
-      width: 100,
+      width: 120,
       editable: true
     },
     {
       field: 'col6',
       headerName: 'Col 6',
-      width: 100,
+      width: 120,
       editable: true
     },
     {
       field: 'col7',
       headerName: 'Col 7',
-      width: 100,
+      width: 120,
       editable: true
     },
     {
       field: 'col8',
       headerName: 'Col 8',
-      width: 100,
-      editable: true
-    },
-    {
-      field: 'col9',
-      headerName: 'Col 9',
-      width: 100,
+      width: 120,
       editable: true
     },
     {
@@ -103,11 +98,9 @@ const MuiDataGrid: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) => {
     }
   ];
 
-  console.log('rows', rows);
   return (
     <>
       <Button variant="contained" onClick={repaint}>
-        {/* Repaint by unsetting and resetting the rows */}
         Repaint
       </Button>
       <DataGrid
@@ -116,7 +109,7 @@ const MuiDataGrid: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) => {
         autoHeight
         disableSelectionOnClick
         editMode="row"
-        onStateChange={handleStateChange}
+        onEditRowsModelChange={handleEditRowsModelChange}
         onCellDoubleClick={handleDoubleCellClick}
         onRowEditStop={handleRowEditStop}
       />

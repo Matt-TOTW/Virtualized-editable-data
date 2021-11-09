@@ -22,39 +22,39 @@ type ColumnData = {
 };
 
 type ReactVirtualizedTableProps = {
-  columns: readonly ColumnData[];
-  headerHeight?: number;
-  onRowClick?: () => void;
+  columns: ColumnData[];
   rows: any[];
-  rowHeight?: number;
 };
 
 const rowHeight = 48;
-const headerHeight = 48;
+
+const TableCell: React.FC = ({ children }) => {
+  return (
+    <MuiTableCell
+      component="div"
+      sx={{
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        boxSizing: 'border-box',
+        cursor: 'initial',
+        height: rowHeight
+      }}
+      variant="body"
+    >
+      {children}
+    </MuiTableCell>
+  );
+};
 
 const ReactVirtualizedTable: React.FC<ReactVirtualizedTableProps> = (props) => {
   const { columns, rows, ...tableProps } = props;
 
-  const headerRenderer = ({ label }: TableHeaderProps) => {
-    const { headerHeight } = props;
-
-    return (
-      <MuiTableCell
-        component="div"
-        sx={{
-          flex: 1,
-          display: 'flex',
-          alignItems: 'center',
-          boxSizing: 'border-box',
-          cursor: 'initial'
-        }}
-        variant="head"
-        style={{ height: headerHeight }}
-      >
-        <span>{label}</span>
-      </MuiTableCell>
-    );
-  };
+  const headerRenderer = ({ label }: TableHeaderProps) => (
+    <TableCell>
+      <span>{label}</span>
+    </TableCell>
+  );
 
   const getRowStyles = ({ index }: Index): React.CSSProperties => {
     const isEdit = Boolean(rows[index]?.isEdit);
@@ -75,8 +75,8 @@ const ReactVirtualizedTable: React.FC<ReactVirtualizedTableProps> = (props) => {
         <Table
           height={height}
           width={width}
-          rowHeight={rowHeight!}
-          headerHeight={headerHeight!}
+          rowHeight={rowHeight}
+          headerHeight={rowHeight}
           rowClassName="row"
           rowStyle={getRowStyles}
           rowCount={rows.length}
@@ -98,25 +98,6 @@ const ReactVirtualizedTable: React.FC<ReactVirtualizedTableProps> = (props) => {
         </Table>
       )}
     </AutoSizer>
-  );
-};
-
-const TableCell: React.FC = (props) => {
-  return (
-    <MuiTableCell
-      component="div"
-      sx={{
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-        boxSizing: 'border-box',
-        cursor: 'initial',
-        height: rowHeight
-      }}
-      variant="body"
-    >
-      {props.children}
-    </MuiTableCell>
   );
 };
 
@@ -148,7 +129,7 @@ const VirtualizedTable: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) 
   const simpleCellRenderer: TableCellRenderer = ({ dataKey, cellData, rowData }) => {
     return (
       <TableCell>
-        {dataKey === 'col10' ? (
+        {dataKey === 'actions' ? (
           <Edit sx={{ cursor: 'pointer' }} onClick={() => startEdit(rowData.id)} />
         ) : (
           cellData
@@ -185,61 +166,55 @@ const VirtualizedTable: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) 
     {
       dataKey: 'col1',
       label: 'Col 1',
-      width: 100,
+      width: 120,
       cellRenderer: editableCellRenderer
     },
     {
       dataKey: 'col2',
       label: 'Col 2',
-      width: 100,
+      width: 120,
       cellRenderer: editableCellRenderer
     },
     {
       dataKey: 'col3',
       label: 'Col 3',
-      width: 100,
+      width: 120,
       cellRenderer: editableCellRenderer
     },
     {
       dataKey: 'col4',
       label: 'Col 4',
-      width: 100,
+      width: 120,
       cellRenderer: editableCellRenderer
     },
     {
       dataKey: 'col5',
       label: 'Col 5',
-      width: 100,
+      width: 120,
       cellRenderer: editableCellRenderer
     },
     {
       dataKey: 'col6',
       label: 'Col 6',
-      width: 100,
+      width: 120,
       cellRenderer: editableCellRenderer
     },
     {
       dataKey: 'col7',
       label: 'Col 7',
-      width: 100,
+      width: 120,
       cellRenderer: editableCellRenderer
     },
     {
       dataKey: 'col8',
       label: 'Col 8',
-      width: 100,
+      width: 120,
       cellRenderer: editableCellRenderer
     },
     {
-      dataKey: 'col9',
-      label: 'Col 9',
-      width: 100,
-      cellRenderer: editableCellRenderer
-    },
-    {
-      dataKey: 'col10',
+      dataKey: 'actions',
       label: 'Actions',
-      width: 100,
+      width: 50,
       cellRenderer: simpleCellRenderer
     }
   ];
@@ -249,7 +224,7 @@ const VirtualizedTable: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) 
       <Button variant="contained" onClick={repaint}>
         Repaint
       </Button>
-      <TableContainer component={Paper} sx={{ height: 'calc(100vh - 250px)' }}>
+      <TableContainer component={Paper} sx={{ height: 'calc(100vh - 250px)', width: '100%' }}>
         <ReactVirtualizedTable columns={columns} rows={rows} />
       </TableContainer>
     </>

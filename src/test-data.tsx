@@ -8,8 +8,6 @@ export const generateRows = (numberOfRows: number) => {
     col5: `col5 row${i}`,
     col6: `col6 row${i}`,
     col7: `col7 row${i}`,
-    col8: `col8 row${i}`,
-    col9: `col9 row${i}`
-    // col10: `col10 row${i}`
+    col8: `col8 row${i}`
   }));
 };

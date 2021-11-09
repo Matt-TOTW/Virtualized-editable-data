@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, TextField, Typography, Grid } from '@mui/material';
 import MuiDateGrid from './MuiDataGrid';
 import PlainTable from './PlainTable';
-import VirtualizedTable from './VirtuializedTable';
+import VirtualizedTable from './VirtualizedTable';
 
 const App: React.FC = () => {
   const [page, setPage] = React.useState('dataGrid');
@@ -33,27 +33,27 @@ const App: React.FC = () => {
             onChange={handelChange}
           />
           <Button onClick={() => setShow(true)} variant="contained" disabled={show}>
-            Paint
+            GO
           </Button>
         </Grid>
         <Grid item>
           <Button
             onClick={() => handleClick('dataGrid')}
-            variant='outlined'
+            variant="outlined"
             disabled={page === 'dataGrid'}
           >
             Data grid
           </Button>
           <Button
             onClick={() => handleClick('plainTable')}
-            variant='outlined'
+            variant="outlined"
             disabled={page === 'plainTable'}
           >
             Plain table
           </Button>
           <Button
             onClick={() => handleClick('virtualizedTable')}
-            variant='outlined'
+            variant="outlined"
             disabled={page === 'virtualizedTable'}
           >
             Virtualized table

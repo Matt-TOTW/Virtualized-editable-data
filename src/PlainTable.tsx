@@ -49,7 +49,6 @@ const PlainTable: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) => {
     );
   };
 
-  console.log('rows', rows);
   return (
     <>
       <Button variant="contained" onClick={repaint}>
@@ -68,7 +67,6 @@ const PlainTable: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) => {
               <TableCell>Col 6</TableCell>
               <TableCell>Col 7</TableCell>
               <TableCell>Col 8</TableCell>
-              <TableCell>Col 9</TableCell>
               <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
@@ -96,7 +94,6 @@ const PlainTable: React.FC<{ numberOfRows: number }> = ({ numberOfRows }) => {
                 <TableCell>{customCellRenderer(row, 6)}</TableCell>
                 <TableCell>{customCellRenderer(row, 7)}</TableCell>
                 <TableCell>{customCellRenderer(row, 8)}</TableCell>
-                <TableCell>{customCellRenderer(row, 9)}</TableCell>
                 <TableCell>
                   <Edit onClick={() => startEdit(row.id)} sx={{ cursor: 'pointer' }} />
                 </TableCell>
